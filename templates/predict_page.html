@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Website Title -->
+    <title>Make a prediction DEMO - by ytchen175</title>
+    
+    <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700&display=swap&subset=latin-ext" rel="stylesheet" type='text/css'>
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type='text/css'>
+    <link href="/static/css/fontawesome-all.css" rel="stylesheet" type='text/css'>
+    <link href="/static/css/swiper.css" rel="stylesheet" type='text/css'>
+	<link href="/static/css/magnific-popup.css" rel="stylesheet" type='text/css'>
+	<link href="/static/css/styles.css" rel="stylesheet" type='text/css'>
+	
+	<!-- Favicon  -->
+    <link rel="icon" href="/static/images/logo.png">
+</head>
+<body data-spy="scroll" data-target=".fixed-top">
+    
+    <!-- Preloader -->
+	<div class="spinner-wrapper">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    <!-- end of preloader -->
+
+    <!-- Header -->
+    <header id="header" class="ex-2-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Fraud Forecasting</h1>
+                   <p>Please enter some required information. </p> 
+
+                    <div class="form-container">
+                        <!-- <form id="/static/php/logInForm.php" data-toggle="validator" data-focus="false"> -->
+
+                            <!-- Flask的routers -->
+                            <form method="POST" action={{ url_for('predict') }}> 
+                            
+                                <!-- 填數字 -->
+                                <label for="conam">conam(交易金額-台幣)</label> 
+                                <input type="text" id="conam" name="conam" required> 
+                                <div class="help-block with-errors"></div>
+                                <br> 
+                                <!-- 下拉式選單 -->
+                                <label for="contp">contp(交易類別)</label> 
+                                <select id="contp" name="contp"> 
+                                  <option value="0">contp=0</option> 
+                                  <option value="1">contp=1</option> 
+                                  <option value="2">contp=2</option> 
+                                  <option value="3">contp=3</option> 
+                                  <option value="4">contp=4</option> 
+                                  <option value="5">contp=5</option> 
+                                  <option value="6">contp=6</option> 
+                                 
+                                </select> 
+                                <br> 
+                                <!-- 填數字 -->
+                                <!-- <label for="csmcu">csmcu(消費地幣別)</label> 
+                                <input type="text" id="csmcu" name="csmcu" required>limit:[0-72]
+                                <div class="help-block with-errors"></div>
+                                <br>  -->
+
+                                <!-- 下拉式選單 -->
+                                <label for="ecfg">ecfg(網路交易註記)</label> 
+                                <select id="ecfg" name="ecfg"> 
+                                  <option value="0">ecfg=N</option> 
+                                  <option value="1">ecfg=Y</option> 
+                                  
+                                </select> 
+                                <br> 
+                                <!-- 下拉式選單 -->
+                                <label for="etymd">etymd(交易型態)</label> 
+                                <select id="etymd" name="etymd"> 
+                                    <option value="0">etymd=0</option> 
+                                    <option value="1">etymd=1</option> 
+                                    <option value="2">etymd=2</option> 
+                                    <option value="3">etymd=3</option> 
+                                    <option value="4">etymd=4</option> 
+                                    <option value="5">etymd=5</option> 
+                                    <option value="6">etymd=6</option> 
+                                    <option value="7">etymd=7</option>
+                                    <option value="8">etymd=8</option> 
+                                    <option value="9">etymd=9</option>
+                                    <option value="9">etymd=10</option>
+
+                                </select> 
+                                <br> 
+                                <!-- 下拉式選單 -->
+                                <label for="flbmk">flbmk(Fallback註記)</label> 
+                                <select id="flbmk" name="flbmk"> 
+                                  <option value="0">flbmk=N</option> 
+                                  <option value="1">flbmk=Y</option> 
+                                  <option value="2">flbmk=NaN</option> 
+                                  
+                                </select> 
+                                <br> 
+                                <!-- 下拉式選單 -->
+                                <label for="hcefg">hcefg(支付型態)</label> 
+                                <select id="hcefg" name="hcefg"> 
+                                  <option value="0">hcefg=0</option> 
+                                  <option value="1">hcefg=1</option> 
+                                  <option value="2">hcefg=2</option> 
+                                  <option value="3">hcefg=3</option> 
+                                  <option value="5">hcefg=5</option> 
+                                  <option value="6">hcefg=6</option> 
+                                  <option value="7">hcefg=7</option>
+                                  <option value="8">hcefg=8</option> 
+                                  <option value="9">hcefg=9</option>
+                                </select> 
+                                <br> 
+                                <!-- 下拉式選單 -->
+                                <!-- <label for="mcc">mcc(商戶類別碼)</label> 
+                                <input type="text" id="mcc" name="mcc" required>limit:[0-434]
+                                <div class="help-block with-errors"></div>
+                                <br>  -->
+                                <!-- 下拉式選單 -->
+                                <label for="ovrlt">ovrlt(超額註記)</label> 
+                                <select id="ovrlt" name="ovrlt"> 
+                                  <option value="0">ovrlt=N</option> 
+                                  <option value="1">ovrlt=Y</option> 
+                                 
+                                </select> 
+                                <br> 
+                                <!-- 填數字
+                                <label for="stocn">stocn(消費地國別)</label> 
+                                <input type="text" id="stocn" name="stocn" required>limit:[0-103]
+                                <div class="help-block with-errors"></div>
+                                <br>  -->
+                                <!-- 下拉式選單 -->
+                                <label for="stscd">stscd(狀態碼)</label> 
+                                <select id="stscd" name="stscd"> 
+                                  <option value="0">stscd=0</option> 
+                                  <option value="1">stscd=1</option> 
+                                  <option value="2">stscd=2</option> 
+                                  <option value="3">stscd=3</option> 
+                                  <option value="4">stscd=4</option> 
+                                  
+                                </select> 
+                                <br> 
+                                <!-- 下拉式選單 -->
+                                <label for="month">month(月份)</label> 
+                                <select id="month" name="month"> 
+                                  <option value="1">month=1</option> 
+                                  <option value="2">month=2</option> 
+                                  <option value="3">month=3</option> 
+                
+                                </select> 
+                                <br> 
+                                <!-- 填數字 -->
+                                <label for="loctm_hour">loctm_hour(授權時間)</label> 
+                                <input type="text" id="loctm_hour" name="loctm_hour" required>limit:[0-23]
+                                <div class="help-block with-errors"></div>
+                                <br> 
+
+                                <input type="submit" value="Submit"> 
+                            </form> 
+                          <br>
+                      <br>
+                  {{ prob_text }}    
+                            <div class="form-message">
+                                <div id="lmsgSubmit" class="h3 text-center hidden"></div>
+                            </div>
+                        </form>
+                      
+                  </div> <!-- end of form container -->
+                <!-- end of sign up form -->
+                    
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </header> <!-- end of ex-header -->
+    <!-- end of header -->
+
+
+    <!-- Scripts -->
+    <script src="/static/js/jquery.min.js"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="/static/js/popper.min.js"></script> <!-- Popper tooltip library for Bootstrap -->
+    <script src="/static/js/bootstrap.min.js"></script> <!-- Bootstrap framework -->
+    <script src="/static/js/jquery.easing.min.js"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="/static/js/swiper.min.js"></script> <!-- Swiper for image and text sliders -->
+    <script src="/static/js/jquery.magnific-popup.js"></script> <!-- Magnific Popup for lightboxes -->
+    <script src="/static/js/validator.min.js"></script> <!-- Validator.js - Bootstrap plugin that validates forms -->
+    <script src="/static/js/scripts.js"></script> <!-- Custom scripts -->
+</body>
+</html>
