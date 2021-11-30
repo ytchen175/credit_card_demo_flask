@@ -1,15 +1,22 @@
 # credit_card_demo_flask
+
+###### Model : `XGBoost`
+###### Library : `XGBoost`, `Flask`, `Bootstrap Template`
+###### Keywords : `Machine Learning`, `Deployment`
+
+# Description
 Use flask and bootstrap template to deploy and demo model.
 
+# Result
 ![image](https://github.com/ytchen175/image/blob/master/pred_demo.gif)
 
-Front End : javascript、 html、bootstrap template(vivo)
+Frontend : javascript、 html、bootstrap template(vivo)
 
-Back End ： flask
+Backend : flask
 
-model ： xgboost
+Model : xgboost
 
-reference:
+# Reference:
 
 https://www.geeksforgeeks.org/deploy-machine-learning-model-using-flask/
 
